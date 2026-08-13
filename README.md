@@ -327,7 +327,7 @@ _Add screenshots here showing successful requests, invalid/missing token respons
 ## 12. Developer Information
 
 - **Student name:** Alvarado
-- **Course and section:** _(add your course and section)_
+- **Course and section:** BSIT 4A
 - **GitHub username:** Burtzs
 - **Repository link:** https://github.com/Burtzs/filipino-cookbook-api-alvarado
-- **Date completed:** _(add date)_
+- **Date completed:** August 13, 2026
