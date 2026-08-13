@@ -150,6 +150,45 @@ $app->group('/api', function (RouteCollectorProxy $group) use ($pdo) {
     });
 
     // ========================================================================
+    // 8. Get a Random Filipino Food
+    // GET /api/foods/random
+    // (Optional Enhancement - Option A)
+    // ========================================================================
+
+    $group->get('/foods/random', function (Request $request, Response $response) use ($pdo) {
+        $stmt = $pdo->query("
+            SELECT f.food_id, f.food_name, c.category_name, o.origin_name, f.instructions
+            FROM foods f
+            JOIN categories c ON f.category_id = c.category_id
+            JOIN origins o ON f.origin_id = o.origin_id
+            ORDER BY RAND()
+            LIMIT 1
+        ");
+        $food = $stmt->fetch();
+
+        if (!$food) {
+            return jsonResponse($response, [
+                'status' => 'error',
+                'message' => 'No foods available.'
+            ], 404);
+        }
+
+        $food['food_id'] = (int)$food['food_id'];
+
+        $ingredientStmt = $pdo->prepare("
+            SELECT i.ingredient_name
+            FROM food_ingredients fi
+            JOIN ingredients i ON fi.ingredient_id = i.ingredient_id
+            WHERE fi.food_id = :id
+            ORDER BY i.ingredient_name
+        ");
+        $ingredientStmt->execute(['id' => $food['food_id']]);
+        $food['ingredients'] = $ingredientStmt->fetchAll(PDO::FETCH_COLUMN);
+
+        return jsonResponse($response, $food);
+    });
+
+    // ========================================================================
     // 3. Get Food by ID
     // GET /api/foods/{id}
     // ========================================================================
@@ -336,44 +375,6 @@ $app->group('/api', function (RouteCollectorProxy $group) use ($pdo) {
         }
     });
 
-    // ========================================================================
-    // 8. Get a Random Filipino Food
-    // GET /api/foods/random
-    // (Optional Enhancement - Option A)
-    // ========================================================================
-
-    $group->get('/foods/random', function (Request $request, Response $response) use ($pdo) {
-        $stmt = $pdo->query("
-            SELECT f.food_id, f.food_name, c.category_name, o.origin_name, f.instructions
-            FROM foods f
-            JOIN categories c ON f.category_id = c.category_id
-            JOIN origins o ON f.origin_id = o.origin_id
-            ORDER BY RAND()
-            LIMIT 1
-        ");
-        $food = $stmt->fetch();
-
-        if (!$food) {
-            return jsonResponse($response, [
-                'status' => 'error',
-                'message' => 'No foods available.'
-            ], 404);
-        }
-
-        $food['food_id'] = (int)$food['food_id'];
-
-        $ingredientStmt = $pdo->prepare("
-            SELECT i.ingredient_name
-            FROM food_ingredients fi
-            JOIN ingredients i ON fi.ingredient_id = i.ingredient_id
-            WHERE fi.food_id = :id
-            ORDER BY i.ingredient_name
-        ");
-        $ingredientStmt->execute(['id' => $food['food_id']]);
-        $food['ingredients'] = $ingredientStmt->fetchAll(PDO::FETCH_COLUMN);
-
-        return jsonResponse($response, $food);
-    });
 
     // ========================================================================
     // 9. Get Foods by Category

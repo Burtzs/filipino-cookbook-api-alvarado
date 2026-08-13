@@ -530,20 +530,20 @@ Screenshots of successful endpoint requests and JSON responses, invalid or missi
 
 | Endpoint | Description | Screenshot |
 |---|---|---|
-| GET /api/foods | Retrieve all foods | *(add screenshot)* |
-| GET /api/foods/1 | Retrieve a specific food by ID | *(add screenshot)* |
-| GET /api/foods/999 | Food not found (404) | *(add screenshot)* |
-| GET /api/foods (no token) | Missing token (401) | *(add screenshot)* |
-| GET /api/foods/search/adobo | Search food by name | *(add screenshot)* |
-| GET /api/categories | Retrieve all categories | *(add screenshot)* |
-| GET /api/ingredients | Retrieve all ingredients | *(add screenshot)* |
-| POST /api/foods | Add a new food (201) | *(add screenshot)* |
-| POST /api/foods (missing fields) | Validation error (400) | *(add screenshot)* |
-| GET /api/foods/random | Random food (optional) | *(add screenshot)* |
-| GET /api/categories/4/foods | Foods by category (optional) | *(add screenshot)* |
-| GET /api/categories/999/foods | Category not found (optional, 404) | *(add screenshot)* |
-| GET /api/origins/2/foods | Foods by origin (optional) | *(add screenshot)* |
-| GET /api/origins/999/foods | Origin not found (optional, 404) | *(add screenshot)* |
+| GET /api/foods | Retrieve all foods | ![GET all foods](testing%20screenshots/GET%20all%20foods.png) |
+| GET /api/foods/1 | Retrieve a specific food by ID | ![GET food by ID](testing%20screenshots/GET%20food%20by%20ID.png) |
+| GET /api/foods/999 | Food not found (404) | ![GET food not found](testing%20screenshots/GET%20food%20not%20found.png) |
+| GET /api/foods (no token) | Missing token (401) | ![Missing token](testing%20screenshots/Missing%20token.png) |
+| GET /api/foods/search/adobo | Search food by name | ![Search food by name](testing%20screenshots/Search%20food%20by%20name.png) |
+| GET /api/categories | Retrieve all categories | ![GET all categories](testing%20screenshots/GET%20all%20categories.png) |
+| GET /api/ingredients | Retrieve all ingredients | ![GET all ingredients](testing%20screenshots/GET%20all%20ingredients.png) |
+| POST /api/foods | Add a new food (201) | ![POST add new food](testing%20screenshots/POST%20add%20new%20food.png) |
+| POST /api/foods (missing fields) | Validation error (400) | ![POST missing fields](testing%20screenshots/POST%20missing%20fields.png) |
+| GET /api/foods/random | Random food (optional) | ![GET random food](testing%20screenshots/GET%20random%20food.png) |
+| GET /api/categories/4/foods | Foods by category (optional) | ![GET foods by category](testing%20screenshots/GET%20foods%20by%20category.png) |
+| GET /api/categories/999/foods | Category not found (optional, 404) | ![Category not found](testing%20screenshots/Category%20not%20found.png) |
+| GET /api/origins/2/foods | Foods by origin (optional) | ![GET foods by origin](testing%20screenshots/GET%20foods%20by%20origin.png) |
+| GET /api/origins/999/foods | Origin not found (optional, 404) | ![Origin not found](testing%20screenshots/Origin%20not%20found.png) |
 
 ## 12. Developer Information
 
